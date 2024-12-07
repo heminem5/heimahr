@@ -26,22 +26,39 @@
               >登录</el-button
             >
           </el-form-item>
+          <!-- <el-form-item label="">
+            <el-button type="primary" @click="testAjax"
+              >测试axios封装
+            </el-button>
+          </el-form-item> -->
         </el-form>
       </el-card>
     </div>
   </div>
 </template>
 <script>
+// import axios from "axios";
+// import request from "@/utils/request";
 export default {
   name: "Login",
   methods: {
     login() {
       this.$refs.form.validate((isOK) => {
         if (isOK) {
-          alert("校验通过");
+          this.$store.dispatch("user/login", this.loginForm);
         }
       });
     },
+    // testAjax() {
+    //   request({
+    //     url: "/sys/login",
+    //     method: "post",
+    //     data: {
+    //       mobile: "13912345678",
+    //       password: "123457",
+    //     },
+    //   });
+    // },
   },
   data() {
     return {
